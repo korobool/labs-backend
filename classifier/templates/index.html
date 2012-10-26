@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Classifier</title>
+    <link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../media/css/style.css">
+</head>
+	<body>
+		<div id="header">
+			<h1 id="header-h1">Classifier</h1>
+		</div>
+		<div id="container" class="center">
+	    	<div id="main">
+	    		{% block content %}
+	    		<p id="label-input">Put your text...</p>
+	    		<form action="/processing-form/" method="post">{% csrf_token %}
+		    		<div class="def-tab">
+		    			<textarea name="processing-text" id="main-textarea" rows="10"></textarea>
+		    		</div>
+					<div class="def-tab">
+						<button type="submit" class="btn btn-primary">Run</button>
+						<button type="button" class="btn">Clear</button>
+					</div>
+				</form>
+				<p id="label-output" class="def-tab">Genre:</p>
+				<input class="input-xlarge def-tab" id="genre-field" type="text" placeholder="Genre" disabled>
+				{% endblock %}
+			</div>
+		</div>
+	    <div id="footer">Korobov Labs &copy; 2012</div>
+	</body>
+</html>

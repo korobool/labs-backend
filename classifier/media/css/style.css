@@ -1,0 +1,76 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    position: relative;
+}
+#container {
+    background: white;
+    min-height: 100%;
+}
+#main {
+	color: #9fa2a6;
+	padding-top: 73px;
+	padding-bottom: 73px;
+}
+#header {
+    background: whiteSmoke;
+    border-bottom: 1px solid #eee;
+    height: 44px;
+    margin-bottom: -73px;
+    position: relative;
+    padding: 14px;
+    padding-left: 50px;
+}
+#header-h1 {
+	color: #9fa2a6;
+	font-family: sans-serif;
+	font-size: 32px;
+	font-weight: lighter;
+	line-height: 27px;
+}
+#footer {
+	background: whiteSmoke;
+	border-top: 1px solid #eee;
+	font-family: sans-serif;
+	font-weight: lighter;
+	height: 29px;
+	line-height: 27px;
+	margin-top: -50px;
+	position:relative;
+	padding: 10px;
+		padding-left: 50px;
+}
+#main-textarea {
+		width: 100%;
+}
+.center {
+	width: 400px;
+    margin: auto;
+}
+#textarea-div {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#button-div {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#label-input {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+#label-output {
+	margin-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#genre-field {
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+/*.def-tab {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}*/
