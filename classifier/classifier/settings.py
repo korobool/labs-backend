@@ -1,3 +1,4 @@
+import os
 # Django settings for classifier project.
 
 DEBUG = True
@@ -43,9 +44,13 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+# Root django app directory
+root_app_dir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = "/home/igor/workspace/labs-backend/classifier/media/"
+#MEDIA_ROOT = "/home/igor/workspace/labs-backend/classifier/media/"
+MEDIA_ROOT = root_app_dir + "/media/"
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -106,7 +111,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/igor/workspace/labs-backend/classifier/templates/"
+    root_app_dir + "/templates/"
+    #"/home/igor/workspace/labs-backend/classifier/templates/"
 )
 
 INSTALLED_APPS = (
