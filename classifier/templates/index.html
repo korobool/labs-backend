@@ -13,17 +13,20 @@
 		<div id="container" class="center">
 	    	<div id="main">
 	    		{% block content %}
-	    		<p id="label-input">Put your text...</p>
+	    		<p id="label-input-describe">Known genres are: {{ genres }}</p>
+                        <p/><p id="label-input">Put your text...</p>
 	    		<form action="/processing-form/" method="post">{% csrf_token %}
 		    		<div class="def-tab">
 		    			<textarea name="processing-text" id="main-textarea" rows="10"></textarea>
-		    		</div>
+		    		        <p id="label-output" class="def-tab">For better result try to use several paragraphs of text or more. </p>
+                                </div>
 					<div class="def-tab">
 						<button type="submit" class="btn btn-primary">Run</button>
 						<button type="button" class="btn">Clear</button>
 					</div>
 				</form>
-				<p id="label-output" class="def-tab">Genre:</p>
+				
+                                <p id="label-output" class="def-tab">Genre:</p>
 				<input class="input-xlarge def-tab" id="genre-field" type="text" placeholder="Genre" disabled>
 				{% endblock %}
 			</div>

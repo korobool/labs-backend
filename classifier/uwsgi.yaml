@@ -1,0 +1,21 @@
+uwsgi:
+    # указываем socket, при помощи которого будет происходить
+    # взаимодействие между nginx и uwsgi
+    socket: /var/tmp/app_uwsgi.sock
+    # здесь указываем путь к django-проекту
+    pythonpath: /home/ubuntu/production/labs-backend/classifier/classifier
+    # устанавливаем переменную окружения, которая хранит имя settings файла
+    env: DJANGO_SETTINGS_MODULE=settings
+    # это имя модуля, который будет запускаться на выполнение
+    # в такой постановке, будет запускаться wsgi.py из директории
+    # указанной выше в 'pythonpath'
+    module: wsgi
+    # путь к лог файлу
+    daemonize: /home/ubuntu/production/labs-backend/classifier/logs/uwsgi.log
+    # прочие настройки, значения который можно посмотреть на сайте uWSGI
+    max-requests: 5000
+    buffer-size: 32768
+    harakiri: 30
+    reload-mercy: 8
+    master: 1
+    no-orphans: 1

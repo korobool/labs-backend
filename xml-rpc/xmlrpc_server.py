@@ -7,6 +7,9 @@ class ServerClass():
         self.username = "root"
         self.password = "xn3ma8"
 
+    def hello_hello(self):
+        pass
+    
     def login(self, username, password):
         key = 0.0
         if (self.username == username) and (self.password == password):
