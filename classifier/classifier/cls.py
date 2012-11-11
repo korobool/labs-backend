@@ -68,10 +68,13 @@ class Classifier:
         print "saved..."
 
     def __load_learnt_data(self):
-        g = open('/home/ubuntu/production/labs-backend/classifier/classifier/genre.dat', 'r').read()
-        v = open('/home/ubuntu/production/labs-backend/classifier/classifier/vocabulary.dat', 'r').read()
-        self.genres = json.loads(g)
-        self.vocabulary = json.loads(v)
+        try:
+            g = open('/home/ubuntu/production/labs-backend/classifier/classifier/genre.dat', 'r').read()
+            v = open('/home/ubuntu/production/labs-backend/classifier/classifier/vocabulary.dat', 'r').read()
+            self.genres = json.loads(g)
+            self.vocabulary = json.loads(v)
+        except:
+            print 'model couldn\'t be load...'
  
     def is_already_trained(self):
         return len(self.genres) > 0 and len(self.vocabulary) > 0
