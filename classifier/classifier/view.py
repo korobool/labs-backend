@@ -27,7 +27,7 @@ import smtplib
 def save(msg):
     try:
         time = datetime.datetime.now()
-        file = open('/home/ubuntu/texts/' + str(time) + '.txt', 'rw')
+        file = open('/home/ubuntu/texts/' + str(time) + '.txt', 'w')
         file.write(msg)
         file.close()
     except:
