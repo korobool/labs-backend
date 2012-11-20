@@ -29,10 +29,10 @@ def save(msg):
         time = datetime.datetime.now()
 
         with open('/home/ubuntu/texts/' + str(time) + '.txt', 'w') as file:
-            file.write(msg)
+            file.write(msg.encode('utf-8'))
         return ''
     except:
-        return 'Warning! Too large text, try smaller.'
+        return 'warning! Non english text detected. Please use pure english.'
 
 def home(request):
     genres_line = ''
@@ -55,4 +55,4 @@ def processing(request):
             genre = "Empty textarea!"
     else:
         genre = "Sorry, wrong POST request!"
-    return render_to_response('processing.html', {'genre':genre + '   ' + comment})
+    return render_to_response('processing.html', {'genre': 'Your genre is:  ' + genre + '   ' + comment})
