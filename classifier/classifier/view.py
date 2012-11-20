@@ -27,11 +27,12 @@ import smtplib
 def save(msg):
     try:
         time = datetime.datetime.now()
-        file = open('/home/ubuntu/texts/' + str(time) + '.txt', 'w')
-        file.write(msg)
-        file.close()
+
+        with open('/home/ubuntu/texts/' + str(time) + '.txt', 'w') as file:
+            file.write(msg)
+        return ''
     except:
-        pass
+        return 'Warning! Too large text, try smaller.'
 
 def home(request):
     genres_line = ''
@@ -44,13 +45,14 @@ def home(request):
     return render_to_response('index.html', c)
 
 def processing(request):
+    comment = ''
     if request.method == 'POST':
         if request.POST['processing-text'] != u'':
             text = request.POST['processing-text']
             genre = text_processor(text)
-            save('________________________\n' + genre + '________________________\n\n\n\n' + text)
+            comment = save('________________________\n' + genre + '________________________\n\n\n\n' + text)
         else:
             genre = "Empty textarea!"
     else:
         genre = "Sorry, wrong POST request!"
-    return render_to_response('processing.html', {'genre':genre})
+    return render_to_response('processing.html', {'genre':genre + '   ' + comment})
