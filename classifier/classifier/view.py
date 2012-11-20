@@ -50,7 +50,7 @@ def processing(request):
         if request.POST['processing-text'] != u'':
             text = request.POST['processing-text']
             genre = text_processor(text)
-            comment = save('________________________\n' + genre + '________________________\n\n\n\n' + text)
+            comment = save('________________________\n' + genre + '\n________________________\n\n\n\n' + text)
         else:
             genre = "Empty textarea!"
     else:
