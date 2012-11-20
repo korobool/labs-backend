@@ -3,5 +3,6 @@ test_data
 *.pyc
 *.pio
 .idea
+.idea/*
 *.iso
 local_data
