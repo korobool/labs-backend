@@ -27,7 +27,7 @@ import smtplib
 def save(msg):
     try:
         time = datetime.datetime.now()
-        session_dir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]+'/data/sessions/'
+        session_dir = os.path.split(os.path.split(os.path.split(os.path.abspath(__file__))[0])[0])[0]+'/data/sessions/'
         with open(session_dir + str(time) + '.txt', 'w') as file:
             file.write(msg.encode('utf-8'))
         return ''

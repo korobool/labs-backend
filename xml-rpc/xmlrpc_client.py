@@ -1,6 +1,11 @@
 __author__ = 'Oleksandr Korobov'
+
 from xmlrpclib import ServerProxy
-connect = ServerProxy("http://korobov-labs.com:8000")
+
+connect = ServerProxy("http://localhost:8001")
+
 print connect.system.listMethods()
-key = connect.login('She was in love but he has killed her. After this murder he was arrested.')
-print key
+
+genre = connect.classify_text('She was in love but he has killed her. After this murder he was arrested.')
+
+print genre

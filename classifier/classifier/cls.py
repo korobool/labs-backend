@@ -118,7 +118,7 @@ class Classifier:
 
     def __load_learnt_data(self):
         try:
-            data_dir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]+'/data/'
+            data_dir = os.path.split(os.path.split(os.path.split(os.path.abspath(__file__))[0])[0])[0]+'/data/'
             g = open(data_dir + 'genre.dat', 'r').read()
             v = open(data_dir + 'vocabulary.dat', 'r').read()
             self.genres = json.loads(g)
