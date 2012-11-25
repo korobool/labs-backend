@@ -102,10 +102,14 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'classifier.urls'
-
-# Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'classifier.wsgi.application'
+if os.uname()[1] == 'ip-10-248-96-199':
+    ROOT_URLCONF = 'urls'    
+    # Python dotted path to the WSGI application used by Django's runserver.
+    WSGI_APPLICATION = 'wsgi.application'
+else:
+    ROOT_URLCONF = 'classifier.urls'
+    # Python dotted path to the WSGI application used by Django's runserver.
+    WSGI_APPLICATION = 'classifier.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
