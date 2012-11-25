@@ -1,6 +1,6 @@
 import os
 import datetime
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, HttpResponse
 from django.core.context_processors import csrf
 from model import text_processor, get_known_genres_list
 import smtplib
@@ -27,11 +27,11 @@ import smtplib
 def save(msg):
     try:
         time = datetime.datetime.now()
-
-        with open('/home/ubuntu/texts/' + str(time) + '.txt', 'w') as file:
+        session_dir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]+'/data/sessions/'
+        with open(session_dir + str(time) + '.txt', 'w') as file:
             file.write(msg.encode('utf-8'))
         return ''
-    except:
+    except: # Exception as e:
         return 'warning! Non english text detected. Please use pure english.'
 
 def home(request):
@@ -55,4 +55,5 @@ def processing(request):
             genre = "Empty textarea!"
     else:
         genre = "Sorry, wrong POST request!"
-    return render_to_response('processing.html', {'genre': 'Your genre is:  ' + genre + '   ' + comment})
+#    return render_to_response('processing.html', {'genre': 'Your genre is:  ' + genre + '   ' + comment})
+    return HttpResponse(genre)

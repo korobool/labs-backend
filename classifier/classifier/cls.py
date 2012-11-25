@@ -8,6 +8,7 @@ import sys
 import json
 import re
 import math
+import os
 
 class Classifier:
     def __init__(self):
@@ -117,12 +118,13 @@ class Classifier:
 
     def __load_learnt_data(self):
         try:
-            g = open('/home/ubuntu/production/labs-backend/classifier/classifier/genre.dat', 'r').read()
-            v = open('/home/ubuntu/production/labs-backend/classifier/classifier/vocabulary.dat', 'r').read()
+            data_dir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]+'/data/'
+            g = open(data_dir + 'genre.dat', 'r').read()
+            v = open(data_dir + 'vocabulary.dat', 'r').read()
             self.genres = json.loads(g)
             self.vocabulary = json.loads(v)
-        except:
-            print 'model couldn\'t be load...'
+        except Exception as e:
+            print 'model couldn\'t be load...', e
  
     def is_already_trained(self):
         return len(self.genres) > 0 and len(self.vocabulary) > 0

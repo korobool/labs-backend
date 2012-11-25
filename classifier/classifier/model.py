@@ -1,6 +1,7 @@
 #from cls import Classifier
 import cls
 import json
+import os
 
 def text_processor(text):
     #return str(cls)
@@ -11,7 +12,8 @@ def text_processor(text):
     return genre
 
 def get_known_genres_list():
-    genres_string = open('/home/ubuntu/production/labs-backend/classifier/classifier/genre.dat', 'r').read()
+    data_dir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]+'/data/'
+    genres_string = open(data_dir + 'genre.dat', 'r').read()
     genres = json.loads(genres_string)
     
     return genres
