@@ -2,6 +2,9 @@
 
 __author__ = 'Oleksandr Korobov'
 
+# This is the linux daemon written in Python.
+# It runs Classifier one, loads it into memory, so deserialization heppens just once.
+# This is significant speed and architecture enhancement.
 
 import sys, os, time, atexit
 from signal import SIGTERM
