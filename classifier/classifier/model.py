@@ -3,12 +3,15 @@ import cls
 import json
 import os
 
+from xmlrpclib import ServerProxy
+
 def text_processor(text):
-    #return str(cls)
-    classify = cls.Classifier()
-    if not classify.is_already_trained():
-        return 'Classifier Is Not Trained Yet'
-    genre = classify.document_class(text)
+#    classify = cls.Classifier()
+#    if not classify.is_already_trained():
+#        return 'Classifier Is Not Trained Yet'
+#    genre = classify.document_class(text)
+    connect = ServerProxy("http://localhost:8001")
+    genre = connect.classify_text(text)
     return genre
 
 def get_known_genres_list():
