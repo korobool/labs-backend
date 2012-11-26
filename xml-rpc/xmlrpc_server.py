@@ -7,6 +7,8 @@ class ServerClass():
     def classify_text(self, text):
         genre = self.ai_agent.document_class(text)
         return genre
+    def get_genres_list(self):
+        return self.ai_agent.genres
 
 server = SimpleXMLRPCServer(("", 8001))
 server.register_instance(ServerClass())
