@@ -32,7 +32,7 @@ def save(msg):
             file.write(msg.encode('utf-8'))
         return ''
     except: # Exception as e:
-        return 'warning! Non english text detected. Please use pure english.'
+        return 'Some errors occurred.'
 
 def home(request):
     genres_line = ''
