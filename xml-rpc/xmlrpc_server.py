@@ -1,5 +1,4 @@
 from SimpleXMLRPCServer import SimpleXMLRPCServer
-import random
 import cls
 
 class ServerClass():
