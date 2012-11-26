@@ -1,14 +1,10 @@
 __author__ = 'Oleksandr Korobov'
 
+# XmlRpc client code example
+
 from xmlrpclib import ServerProxy
-
-#connect = ServerProxy("http://korobov-labs.com:8001")
 connect = ServerProxy("http://localhost:8001")
+print 'Known genre are:', connect.get_genres_list()
+print 'Your genre is: ', connect.classify_text('Put your english text here...')
 
-#print connect.system.listMethods()
 
-#genre = connect.classify_text('She was in love but he has killed her. After this murder he was arrested.')
-
-genre = connect.classify_text('Put your english text here...')
-
-print genre
