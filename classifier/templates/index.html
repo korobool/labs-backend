@@ -15,8 +15,14 @@
 		<div id="container" class="center">
 	    	<div id="main">
 	    		{% block content %}
+	    		<div id="label-input" class="alert alert-info">
+	    			<button id="bottom-info" type="button" class="close" data-dismiss="alert">×</button>
+		    			The main page is under construction, and will be available soon.
+		    			We have redirected you to this working example of Machine
+		    			Learning and Natural Language Processing application.
+	    		</div>
 	    		<p id="label-input-describe">Known genres are: {{ genres }}</p>
-                        <p/><p id="label-input">Put your text...</p>
+	    		<p id="label-input">Put your text...</p>
 	    		<form id="proc-form" action="/processing-form/" method="post">{% csrf_token %}
 		    		<div class="def-tab">
 		    			<textarea name="processing-text" id="main-textarea" rows="10"></textarea>

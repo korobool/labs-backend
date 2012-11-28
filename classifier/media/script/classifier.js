@@ -1,6 +1,5 @@
 $(function() {
 	$('#send-btn').click(function() {
-		console.log($('#genre-field'));
 		$('#genre-field').val("Detecting genre...");
 	});
     $('#proc-form').submit(function() {
@@ -14,4 +13,7 @@ $(function() {
         });
         return false;
     });
+	$('.close').click(function() {
+		$(this).parent().toggle();
+	});
 });
