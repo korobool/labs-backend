@@ -2,43 +2,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Classifier</title>
+    {% block title %}
+    	<title>Classifier</title>
+    {% endblock %}
     <link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../media/css/style.css">
+    {% block style %}
+    	<link rel="stylesheet" type="text/css" href="../media/css/style.css">
+    {% endblock %}
     <script type="text/javascript" src="../media/script/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="../media/script/classifier.js"></script>
+    {% block script %}
+    	<script type="text/javascript" src="../media/script/classifier.js"></script>
+    {% endblock %}
 </head>
-	<body>
-		<div id="header">
-			<h1 id="header-h1">Classifier</h1>
+<body>
+	{% block header %}
+	<div class="header">
+		{% block header-name %}
+		<h1 class="header-name">Classifier</h1>
+		{% endblock %}
+	</div>
+	{% endblock %}
+	{% block content %}
+	<div class="container center">
+    	<div class="main">
+    		<div class="alert alert-info">
+    			<button type="button" class="close" data-dismiss="alert">×</button>
+    			The main page is under construction, and will be available soon.
+    			We have redirected you to this working example of Machine
+    			Learning and Natural Language Processing application.
+    		</div>
+    		<p>Known genres are: {{ genres }}</p>
+    		<p>Put your text...</p>
+    		<form id="proc-form" action="/processing-form/" method="post">
+    		{% csrf_token %}
+    			<textarea name="processing-text" class="standart-width" rows="10"></textarea>
+		        <p class="">
+		        	For better result try to use several text paragraphs or more.
+		        </p>
+				<button id="send-btn" type="submit" class="btn btn-primary">Run</button>
+<!-- 				<button type="button" class="btn">Clear</button> -->
+			</form>
+			<p class="">Genre:</p>
+			<input class="input-xlarge standart-width" id="genre-field" type="text" placeholder="Genre" disabled>
 		</div>
-		<div id="container" class="center">
-	    	<div id="main">
-	    		{% block content %}
-	    		<div id="label-input" class="alert alert-info">
-	    			<button id="bottom-info" type="button" class="close" data-dismiss="alert">×</button>
-		    			The main page is under construction, and will be available soon.
-		    			We have redirected you to this working example of Machine
-		    			Learning and Natural Language Processing application.
-	    		</div>
-	    		<p id="label-input-describe">Known genres are: {{ genres }}</p>
-	    		<p id="label-input">Put your text...</p>
-	    		<form id="proc-form" action="/processing-form/" method="post">{% csrf_token %}
-		    		<div class="def-tab">
-		    			<textarea name="processing-text" id="main-textarea" rows="10"></textarea>
-		    		        <p id="label-output" class="def-tab">For better result try to use several text paragraphs or more. </p>
-                                </div>
-					<div class="def-tab">
-						<button id="send-btn" type="submit" class="btn btn-primary">Run</button>
-						<button type="button" class="btn">Clear</button>
-					</div>
-				</form>
-				
-                                <p id="label-output" class="def-tab">Genre:</p>
-				<input class="input-xlarge def-tab" id="genre-field" type="text" placeholder="Genre" disabled>
-				{% endblock %}
-			</div>
-		</div>
-	    <div id="footer">Korobov Labs &copy; 2012  contact <a href="mailto:korobov.alex@gmail.com?subject=Korobov-labs.com Calssifier Page">korobov.alex@gmail.com</a> </div>
-	</body>
+	</div>
+	{% endblock %}
+	{% block footer %}
+    <div class="footer">Korobov Labs &copy; 2012
+    	contact 
+    	<a href="mailto:korobov.alex@gmail.com?subject=Korobov-labs.com Calssifier Page">korobov.alex@gmail.com</a>
+    </div>
+    {% endblock %}
+</body>
 </html>
