@@ -35,6 +35,9 @@ def save(msg):
         return 'Some errors occurred.'
 
 def home(request):
+    return render_to_response('home.html')
+
+def classifier(request):
     genres_line = ''
 
     for g in get_known_genres_list():
