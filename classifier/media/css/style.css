@@ -38,6 +38,17 @@ html, body {
 	font-weight: lighter;
 	line-height: 27px;
 }
+.header-project-name {
+	border-left: 1px solid lightGrey;
+	margin-left: 10px;
+	float: left;
+	padding-left: 10px;
+	font-family: sans-serif;
+	color: #9FA2A6;
+	font-size: 32px;
+	font-weight: lighter;
+	line-height: 27px;
+}
 .header-menu {
 	float: right;
 	margin: 8px 50px 10px 0;

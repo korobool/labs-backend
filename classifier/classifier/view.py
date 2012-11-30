@@ -27,7 +27,8 @@ import smtplib
 def save(msg):
     try:
         time = datetime.datetime.now()
-        session_dir = os.path.split(os.path.split(os.path.split(os.path.abspath(__file__))[0])[0])[0]+'/data/sessions/'
+        session_dir = os.path.split(os.path.split(os.path.split(
+                        os.path.abspath(__file__))[0])[0])[0]+'/data/sessions/'
         with open(session_dir + str(time) + '.txt', 'w') as file:
             file.write(msg.encode('utf-8'))
         return ''
@@ -45,7 +46,7 @@ def classifier(request):
 
     c = {'genres':genres_line}
     c.update(csrf(request))
-    return render_to_response('index.html', c)
+    return render_to_response('classifier.html', c)
 
 def processing(request):
     comment = ''
@@ -53,10 +54,11 @@ def processing(request):
         if request.POST['processing-text'] != u'':
             text = request.POST['processing-text']
             genre = text_processor(text)
-            comment = save('________________________\n' + genre + '\n________________________\n\n\n\n' + text)
+            comment = save('________________________\n'
+                           + genre +
+                           '\n________________________\n\n\n\n' + text)
         else:
             genre = "Empty textarea!"
     else:
         genre = "Sorry, wrong POST request!"
-#    return render_to_response('processing.html', {'genre': 'Your genre is:  ' + genre + '   ' + comment})
     return HttpResponse(genre)

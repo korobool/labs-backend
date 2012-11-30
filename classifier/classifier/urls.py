@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-from view import home, processing
+from view import home, processing, classifier
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -8,7 +8,8 @@ from view import home, processing
 
 urlpatterns = patterns('',
                        (r'^$', home),
-                       (r'^processing-form/$', processing),
+                       (r'^classifier/$', classifier),
+                       (r'^processing/$', processing),
     # Examples:
     # url(r'^$', 'classifier.views.home', name='home'),
     # url(r'^classifier/', include('classifier.foo.urls')),

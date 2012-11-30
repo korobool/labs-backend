@@ -6,25 +6,28 @@
     <link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../media/css/style.css">
     <script type="text/javascript" src="../media/script/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../media/script/bootstrap.js"></script>
     {% block style %}{% endblock %}
     {% block script %}{% endblock %}
 </head>
 <body>
 	<div class="header">
-		<h1 class="header-name">{% block header %}{% endblock %}</h1>
+		<h1 class="header-name">Korobov Labs</h1>
+		<h1 class="header-project-name">
+			{% block header-name %}{% endblock %}
+		</h1>
 		<ul class="nav nav-pills header-menu">
-		  <li class="active">
-		    <a href="#">Home</a>
+		  <li class="">
+		    <a href="/">Home</a>
 		  </li>
 		  <li class="">
-		    <a href="#">Projects</a>
-		  </li>
-		  <li class="">
-		    <a href="#">About</a>
+		    <a href="/classifier/">Classifier</a>
 		  </li>
 		</ul>
 	</div>
-	<div class="container center">{% block content %}{% endblock %}</div>
+	<div class="container">
+		{% block content %}{% endblock %}
+	</div>
 	<div class="footer">{% block footer %}{% endblock %}</div>
 </body>
 </html>
