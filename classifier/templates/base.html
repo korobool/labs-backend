@@ -12,24 +12,23 @@
 </head>
 <body>
 	<div class="header">
-		<h1 class="header-name">Korobov Labs</h1>
+		<a href="/"><h1 class="header-name">Korobov Labs</h1></a>
 		<h1 class="header-project-name">
 			{% block header-name %}{% endblock %}
 		</h1>
 		<ul class="nav nav-pills header-menu">
-		  <li class="">
-		    <a href="/">Home</a>
-		  </li>
-		  <li class="">
-		    <a href="/classifier/">Classifier</a>
-		  </li>
+		  <li><a href="/">Home</a></li>
+		  <li><a href="/classifier/">Classifier</a></li>
 		</ul>
 	</div>
 	<div class="container">
 		{% block content %}{% endblock %}
 	</div>
 	<div class="footer">
-		{% block footer %}{% endblock %}contact
+		<a href="/">Korobov Labs</a>
+		&copy; 2012
+		{% block footer %}{% endblock %}
+		contact
 		<a href="mailto:korobov.alex@gmail.com?subject=Korobov-labs.com Calssifier Page">
 			korobov.alex@gmail.com</a>
 	</div>
