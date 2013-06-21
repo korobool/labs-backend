@@ -12,10 +12,13 @@ html, body {
     background: white;
     min-height: 100%;
 }
-.center {
-    margin: auto;
-	width: 400px;
-}
+.center {margin: auto;/*width: 400px;*/}
+.center-classifier {width: 400px;}
+.center-twitter-map {width: 100%;}
+.twitts-container {height: 400px;}
+.bottom-panel {margin-bottom: 10px;}
+#map-canvas {height: 400px;}
+#map-canvas img {max-width: none;} /*Решает проблему с расплывшимся слайдером в карте*/
 .main {
 	color: #9fa2a6;
 	padding-top: 83px;

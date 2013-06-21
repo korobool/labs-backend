@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Twitter Map - Korobov Labs{% endblock %}
+{% block style %}{% endblock %}
+{% block script %}
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+  <script type="text/javascript" src="../media/script/StyledMarker.js"></script>
+  <script type="text/javascript" src="../media/script/map.js"></script>
+{% endblock %}
+
+{% block header-name %}Twitter Map{% endblock %}
+{% block content %}
+{% csrf_token %}
+<div class="center main center-twitter-map">
+  <ul class="thumbnails">
+    <li class="span9">
+      <div class="thumbnail">
+        <div id="map-canvas"></div>
+      </div>
+    </li>
+    <li class="span3">
+      <div class="thumbnail twitts-container">
+        <h3 class="twitts">Twitts</h3>
+      </div>
+    </li>
+  </ul>
+  <ul class="thumbnails">
+    <li class="span12 bottom-panel">
+      <div class="thumbnail">
+        <!-- <h3>Parametres</h3> -->
+        <div class="progress progress-info">
+          <div class="bar" style="width: 20%"></div>
+        </div>
+        <div class="progress progress-success">
+          <div class="bar" style="width: 40%"></div>
+        </div>
+        <!-- <div class="progress progress-warning">
+          <div class="bar" style="width: 60%"></div>
+        </div>
+        <div class="progress progress-danger">
+          <div class="bar" style="width: 80%"></div> -->
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+{% endblock %}
