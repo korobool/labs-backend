@@ -55,31 +55,34 @@ function initialize() {
 
     var message_count = 0;
     function showTwitt(response) {
-        $('.twitts').after(function() {
-            var twitt = JSON.parse(response);
-            if (message_count >= twitt_count)
-                $('.twitt')[twitt_count - 1].remove();
-            if (twitt.text[0].length > 19)
-                return '<div class="twitt" style="display: none">' + twitt.text[0].substr(0, 19) + '...</div>';
-            var message = '<div class="twitt" style="display: none">' + twitt.text + '</div>';
-            return message;
-        });
-        $('.twitt').show('slow');
-        message_count += 1;
+        // var n = 0;
+        // while (n < response.length) {
+            $('.twitts').after(function() {
+                // var twitt = JSON.parse(response);
+                var twitt = response;
+                if (message_count >= twitt_count)
+                    $('.twitt')[twitt_count - 1].remove();
+                if (twitt.text.length > 19)
+                    return '<div class="twitt" style="display: none">' + twitt.text.substr(0, 19) + '...</div>';
+                var message = '<div class="twitt" style="display: none">' + twitt.text + '</div>';
+                return message;
+            });
+            $('.twitt').show('slow');
+            message_count += 1;
+        //     n++;
+        // }
     }
 
     var marker_count = 0;
     function responseCallback(response) {
         var n = 0;
         while (n < response.length) {
-            var twitt = JSON.parse(response[n]);
+            var twitt = response[n];
             var myLatLng = new google.maps.LatLng(twitt.coordinates[1],
                                                   twitt.coordinates[0]);
             if (marker_count >= twitt_count) {
-                // $('.twitt')[0].remove();
                 markersArray[0].setMap(null);
                 markersArray.splice(0, 1);
-                // delete markersArray[0];
             }
             markersArray.push(new StyledMarker({
                 styleIcon: new StyledIcon(StyledIconTypes.BUBBLE,
@@ -88,20 +91,30 @@ function initialize() {
                     map: map
                 })
             );
+            // showTwitt(twitt);
+            // setTimeout(console.log("прошла секунда"), 1000);
+            // console.log("прошла секунда").delay(1000);
+            // setTimeout(showTwitt(twitt), 1000);
             marker_count += 1;
             n++;
         }
         getTwitts();
     }
 
+    var id = 0;
     function getTwitts() {
         $.ajax({
             type: "get",
-            data: { "id": 0 },
+            data: { "id": id },
             url: "/get_messages/",
             success: function(response) {
                 responseCallback(response);
-                showTwitt(response);
+                // showTwitt(response);
+                // var id_list = [];
+                // console.log("ok")
+                // console.log(id_list);
+                // for (var i = 0; i < response.length; i++)
+                //     id_list.push(response[i]['id']);
             }
         });
     }

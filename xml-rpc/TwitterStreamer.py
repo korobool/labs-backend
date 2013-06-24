@@ -62,10 +62,13 @@ class Tstream:
         for line in response:
             data = json.loads(line.strip())
             if 'text' in data and 'lang' in data:
-                if (data['lang'] == 'en' or data['lang'] == 'ru') and data['coordinates'] != None:
-                    yield {'id': data['id_str'],
-                           'coordinates': data['coordinates']['coordinates'],
-                           'text': data['text']}
+                if (data['lang'] == 'en') and data['coordinates'] != None:
+                    try:
+                        yield {'id': data['id_str'],
+                               'coordinates': data['coordinates']['coordinates'],
+                               'text': str(data['text'])}
+                    except Exception:
+                        pass
 
 from xmlrpclib import ServerProxy
 twitt_queue = ServerProxy("http://localhost:8002")

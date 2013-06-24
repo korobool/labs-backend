@@ -94,8 +94,8 @@ function inherits(childCtor, parentCtor) {
         image_ = null;
       });
       // Replace all '#' char
-      // me.text = me.text[0].replace(/#/g, "%23");
-      me.text = escape(me.text[0]);
+      // me.text = me.text.replace(/#/g, "%23");
+      me.text = escape(me.text);
       image_.src = styledIconType.getURL(me);
       simage_.src = styledIconType.getShadowURL(me);
     }
