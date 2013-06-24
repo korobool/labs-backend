@@ -5,32 +5,36 @@ __author__ = 'Oleksandr Korobov'
 import sys
 
 from PyDaemon import Daemon
+from TwitterQueue import TwitterQueue
 
 from SimpleXMLRPCServer import SimpleXMLRPCServer
-import cls
 
-class ServerClass():
+
+class TwitterQueueServerClass():
     def __init__(self):
-        self.ai_agent = cls.Classifier()
-    def classify_text(self, text):
-        genre = self.ai_agent.document_class(text)
-        return genre
-    def get_genres_list(self):
-        return self.ai_agent.genres
+        self.twitter_queue = TwitterQueue()
 
-class ClassifierDaemon(Daemon):
+    def add_twitt(self, twitt):
+        self.twitter_queue.add(twitt)
+        print twitt
+        return True
+
+    def get_twitts_list(self, id=0):
+        return self.twitter_queue.get_twitts(id)
+
+class TwitterQueueDaemon(Daemon):
     def run(self):
         while True:
             try:
-                server = SimpleXMLRPCServer(("", 8001))
-                server.register_instance(ServerClass())
+                server = SimpleXMLRPCServer(("", 8002))
+                server.register_instance(TwitterQueueServerClass())
                 server.register_introspection_functions()
                 server.serve_forever()
             except Exception as e:
                 pass
 
 if __name__ == "__main__":
-    daemon = ClassifierDaemon('/tmp/classifier-daemon.pid')
+    daemon = TwitterQueueDaemon('/tmp/twitter-queue-daemon.pid')
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
             daemon.start()
