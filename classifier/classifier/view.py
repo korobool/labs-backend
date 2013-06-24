@@ -55,6 +55,7 @@ def twitter_map(request):
     return render_to_response('twitter-map.html', c)
 
 def get_messages(request):
+    id = request.GET.get('id')
     messages = fetch_samples()
     # return json.dumps(messages)
     return HttpResponse(json.dumps(messages), content_type="json")

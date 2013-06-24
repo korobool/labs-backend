@@ -97,6 +97,7 @@ function initialize() {
     function getTwitts() {
         $.ajax({
             type: "get",
+            data: { "id": 0 },
             url: "/get_messages/",
             success: function(response) {
                 responseCallback(response);
