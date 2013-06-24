@@ -93,6 +93,9 @@ function inherits(childCtor, parentCtor) {
         me.set(s_,styledIconType.getShape(me,w,h));
         image_ = null;
       });
+      // Replace all '#' char
+      // me.text = me.text[0].replace(/#/g, "%23");
+      me.text = escape(me.text[0]);
       image_.src = styledIconType.getURL(me);
       simage_.src = styledIconType.getShadowURL(me);
     }
@@ -241,7 +244,7 @@ function inherits(childCtor, parentCtor) {
     defaults: {
       text:'',
       color:'00ff00',
-      fore:'000000'
+      fore:'ffffff'
     },
     getURL: function(props){
       var _url = bu_ + 'd_bubble_text_small&chld=bb|';

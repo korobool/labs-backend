@@ -69,9 +69,23 @@ def fetchsamples():
   import time
   import random
   time.sleep(2)
-  return [json.dumps({"text": "Это какая-то плохая Я",
+  return [json.dumps({"text": random.choice(messages),
                       "coordinates": [random.random()*90, random.random()*90]})
          ]
 
 # if __name__ == '__main__':
 #   fetchsamples()
+messages = [
+  ["Just posted a video @ Little Miami http://t.co/LaqYwuRlWP"],
+  ["Imaginanse comerse ese #M&amp;M #fun #chocolate @ Times Square http://t.co/n4HZVgfJoo"],
+  ["Need mates that want to go races"],
+  ["I love you. Just more you know."],
+  ["@melodisurmeli (@ Big Mamma's w/ 4 others) http://t.co/VKrUycUgc6"],
+  ["RESPECT!"],
+  ["I wish church was outside today! #sundaysun"],
+  ["Stuck in d worst traffic jam here in #Agra. Apprntly,1 of d gates fr rail crossing not working!#Traffucked!"],
+  ["Really want to change my hair colour to something lighter for the summer #summer"],
+  ["5 minutes left. #LM24 \ud83d\ude0b\ud83d\ude04"],
+  ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@WWWWWWWWWWWWWWWWWWWWWWWWWW"],
+  ["MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"]
+  ]

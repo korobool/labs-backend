@@ -1,38 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../media/css/style.css">
-    <script type="text/javascript" src="../media/script/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../media/script/bootstrap.js"></script>
-    {% block style %}{% endblock %}
-    {% block script %}{% endblock %}
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="../media/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../media/css/style.css">
+  <script type="text/javascript" src="../media/script/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../media/script/bootstrap.js"></script>
+  {% block style %}{% endblock %}
+  {% block script %}{% endblock %}
 </head>
 <body>
-	<div class="header">
-		<a href="/"><h1 class="header-name">Korobov Labs</h1></a>
-		<h1 class="header-project-name">
-			{% block header-name %}{% endblock %}
-		</h1>
-		<ul class="nav nav-pills header-menu">
-			<li><a href="/classifier/">Text Categorization Example</a></li>
-            <li><a href="/twitter_map/">Twitter Map Example</a></li>
-		</ul>
-	</div>
-	<div class="container">
-		{% block content %}{% endblock %}
-	</div>
-	<div class="footer">
-		<a href="/">Korobov Labs</a>
-		&copy; 2012-2013
-		{% block footer %}{% endblock %}
-		contact
-		<a href="mailto:korobov.laboratory@gmail.com?subject=Korobov-labs.com Korobov Labs">
-			korobov.laboratory@gmail.com</a>
-	</div>
+  <div class="header">
+    <a href="/"><h1 class="header-name">Korobov Labs</h1></a>
+    <h1 class="header-project-name">
+      {% block header-name %}{% endblock %}
+    </h1>
+    <ul class="nav nav-pills header-menu">
+      <li><a href="/classifier/">Text Categorization Example</a></li>
+      <li><a href="/twitter_map/">Twitter Map Example</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+  <div class="footer">
+    <a href="/">Korobov Labs</a>
+    &copy; 2012-2013
+    {% block footer %}{% endblock %}
+    contact
+    <a href="mailto:korobov.laboratory@gmail.com?subject=Korobov-labs.com Korobov Labs">
+      korobov.laboratory@gmail.com</a>
+  </div>
 </body>
 </html>
