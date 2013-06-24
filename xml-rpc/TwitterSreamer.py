@@ -69,8 +69,7 @@ from xmlrpclib import ServerProxy
 twitt_queue = ServerProxy("http://localhost:8002")
 
 def process_twitt(twitt):
-    print twitt
-    twitt_queue.add_twitt(twitt)
+    print twitt_queue.add_twitt(twitt), twitt
 
 
 def run():

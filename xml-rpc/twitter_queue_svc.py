@@ -3,7 +3,7 @@
 __author__ = 'Oleksandr Korobov'
 
 import sys
-
+import json
 from PyDaemon import Daemon
 from TwitterQueue import TwitterQueue
 
@@ -15,12 +15,12 @@ class TwitterQueueServerClass():
         self.twitter_queue = TwitterQueue()
 
     def add_twitt(self, twitt):
-        self.twitter_queue.add(twitt)
-        print twitt
+        self.twitter_queue.add(json.loads(twitt))
+        # print twitt
         return True
 
-    def get_twitts_list(self, id=0):
-        return self.twitter_queue.get_twitts(id)
+    def get_twitts_list(self, id):
+        return json.dumps(self.twitter_queue.get_twitts(id))
 
 class TwitterQueueDaemon(Daemon):
     def run(self):
