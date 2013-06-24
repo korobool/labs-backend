@@ -63,14 +63,16 @@ class Tstream:
             data = json.loads(line.strip())
             if 'text' in data and 'lang' in data:
                 if (data['lang'] == 'en' or data['lang'] == 'ru') and data['coordinates'] != None:
-                    yield json.dumps((data['id_str'], data['coordinates']['coordinates'], data['text']))
+                    yield {'id': data['id_str'],
+                           'coordinates': data['coordinates']['coordinates'],
+                           'text': data['text']}
 
 from xmlrpclib import ServerProxy
 twitt_queue = ServerProxy("http://localhost:8002")
 
 def process_twitt(twitt):
-    print twitt_queue.add_twitt(twitt), twitt
-
+    print twitt_queue.add_twitt(json.dumps(twitt)), twitt
+    # print type(twitt)
 
 def run():
     # Create twitter streamer and set credentials

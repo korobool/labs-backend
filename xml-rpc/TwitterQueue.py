@@ -10,7 +10,7 @@ class TwitterQueue():
     def get_twitts(self, id):
         #return list(self.twitter_queue)
         return filter(
-            lambda twitt: twitt[0] > id, self.twitter_queue)
+            lambda twitt: twitt['id'] > id, self.twitter_queue)
 
     def add(self, twitt):
         self.twitter_queue.append(twitt)
