@@ -4,5 +4,3 @@ twitt_queue = ServerProxy("http://localhost:8002")
 
 def fetchsamples(id='0'):
     return json.loads(twitt_queue.get_twitts_list(id))
-
-from pprint import pprint; pprint(fetchsamples())
