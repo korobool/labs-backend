@@ -18,3 +18,10 @@ def get_known_genres_list():
         pass
 
     return genres
+
+from twitter_live import fetchsamples
+
+def fetch_samples(id):
+    messages = fetchsamples(id=id)
+    return messages
+    

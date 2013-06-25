@@ -2,4 +2,6 @@
 	color: #9fa2a6;
 	padding: 83px 150px 73px; /* top left bottom right*/
 	width: 640px;
+    margin-left: auto;
+    margin-right: auto;
 }

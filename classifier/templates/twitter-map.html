@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Twitter Map - Korobov Labs{% endblock %}
+{% block style %}{% endblock %}
+{% block script %}
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+  <script type="text/javascript" src="../media/script/StyledMarker.js"></script>
+  <script type="text/javascript" src="../media/script/map.js"></script>
+{% endblock %}
+
+{% block header-name %}Twitter Map{% endblock %}
+{% block content %}
+{% csrf_token %}
+<div class="center main">
+  <ul class="thumbnails row-fluid">
+    <li class="span9">
+      <div class="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#lA" data-toggle="tab">Map</a></li>
+          <li><a href="#lB" data-toggle="tab">Analysis</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="lA">
+            <div class="thumbnail">
+              <div id="map-canvas"></div>
+            </div>
+          </div>
+          <div class="tab-pane" id="lB">
+            <div class="thumbnail analysis-block">
+              <div class="alert alert-info" style="margin: 245px;">
+                Analysis will be coming soon...
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="span3">
+      <div class="thumbnail twitts-container">
+        <h3 class="twitts">Twitts</h3>
+      </div>
+    </li>
+  </ul>
+<!--   <ul class="thumbnails">
+    <li class="span12 bottom-panel">
+      <div class="thumbnail">
+        <div class="progress progress-info">
+          <div class="bar" style="width: 20%"></div>
+        </div>
+        <div class="progress progress-success">
+          <div class="bar" style="width: 40%"></div>
+        </div>
+      </div>
+    </li>
+  </ul> -->
+</div>
+{% endblock %}

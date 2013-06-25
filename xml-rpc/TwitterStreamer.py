@@ -86,7 +86,11 @@ def process_twitt(twitt):
 
 def run():
     # Create twitter streamer and set credentials
+<<<<<<< HEAD
     twitter_stream = Tstream('/home/ubuntu/production/security_keys/skeys.txt')
+=======
+    twitter_stream = Tstream('/home/oleksandr/repos/security_keys/skeys.txt')
+>>>>>>> 1e37c585d93893a70d05a9a892558b5200673819
 
     # Process twitts one by one
     for twitt in twitter_stream.read():

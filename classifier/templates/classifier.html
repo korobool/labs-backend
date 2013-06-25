@@ -3,27 +3,21 @@
 {% block title %}Classifier - Korobov Labs{% endblock %}
 {% block style %}{% endblock %}
 {% block script %}
-	<script type="text/javascript" src="../media/script/classifier.js"></script>
+  <script type="text/javascript" src="../media/script/classifier.js"></script>
 {% endblock %}
 
 {% block header-name %}Classifier{% endblock %}
 {% block content %}
-<div class="center main">
-	<!-- <div class="alert alert-info">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		The main page is under construction, and will be available soon.
-		We have redirected you to this working example of Machine
-		Learning and Natural Language Processing application.
-	</div> -->
-	<p>Known genres are: {{ genres }}</p>
-	<p>Put your text...</p>
-	<form id="proc-form" action="/processing/" method="post">
-	{% csrf_token %}
-		<textarea name="processing-text" class="standart-width" rows="10"></textarea>
-        <p>For better result try to use several text paragraphs or more.</p>
-		<button id="send-btn" type="submit" class="btn btn-primary">Run</button>
-	</form>
-	<p>Genre:</p>
-	<input class="input-xlarge standart-width" id="genre-field" type="text" placeholder="Genre" disabled>
+<div class="center main center-classifier">
+  <p>Known genres are: {{ genres }}</p>
+  <p>Put your text...</p>
+  <form id="proc-form" action="/processing/" method="post">
+    {% csrf_token %}
+    <textarea name="processing-text" class="standart-width" rows="10"></textarea>
+    <p>For better result try to use several text paragraphs or more.</p>
+    <button id="send-btn" type="submit" class="btn btn-primary">Run</button>
+  </form>
+  <p>Genre:</p>
+  <input class="input-xlarge standart-width" id="genre-field" type="text" placeholder="Genre" disabled>
 </div>
 {% endblock %}

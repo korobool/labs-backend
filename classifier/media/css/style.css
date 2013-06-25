@@ -11,16 +11,29 @@ html, body {
 .container {
     background: white;
     min-height: 100%;
+    min-width: 95%;
+    /*width: 1300px;*/
 }
-.center {
-    margin: auto;
-	width: 400px;
-}
+.center {margin: auto;/*width: 400px;*/}
+.center-classifier {width: 400px;}
+.center-twitter-map {}
+.twitts-container {height: 528px;}
+.bottom-panel {margin-bottom: 10px;}
+.analysis-block {min-height: 528px;}
+/*.twitts-tabs {float: left;
+    margin-right: -1px;
+    border-right: 1px solid #ddd;
+    margin-top: 20px;}*/
+/*.twitts-tabs {margin-right: -1px;}*/
+.nav-tabs {margin-right: -1px; margin-top: 20px;}
+#map-canvas {height: 528px;}
+#map-canvas img {max-width: none;} /*Решает проблему с расплывшимся слайдером на карте*/
 .main {
 	color: #9fa2a6;
 	padding-top: 83px;
-	padding-bottom: 73px;
+	padding-bottom: 27px;
 }
+.twitt {margin-bottom: 10px;}
 .standart-width {
 	max-width: 386px;
 	width: 100%;

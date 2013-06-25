@@ -2,8 +2,9 @@ import os
 import datetime
 from django.shortcuts import render_to_response, HttpResponse
 from django.core.context_processors import csrf
-from model import text_processor, get_known_genres_list
+from model import text_processor, get_known_genres_list, fetch_samples
 import smtplib
+import json
 
 #def mail(msg):
 #    try:
@@ -47,6 +48,17 @@ def classifier(request):
     c = {'genres':genres_line}
     c.update(csrf(request))
     return render_to_response('classifier.html', c)
+
+def twitter_map(request):
+    c = {}
+    c.update(csrf(request))
+    return render_to_response('twitter-map.html', c)
+
+def get_messages(request):
+    id = request.GET.get('id')
+    messages = fetch_samples(id)
+    # return json.dumps(messages)
+    return HttpResponse(json.dumps(messages), content_type="json")
 
 def processing(request):
     comment = ''
