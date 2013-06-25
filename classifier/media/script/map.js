@@ -60,8 +60,10 @@ function initialize() {
             $('.twitts').after(function() {
                 // var twitt = JSON.parse(response);
                 var twitt = response;
-                if (message_count >= twitt_count)
+                if (message_count >= twitt_count) {
                     $('.twitt')[twitt_count - 1].remove();
+                    message_count -= 1;
+                }
                 if (twitt.text.length > 19)
                     return '<div class="twitt" style="display: none">' + twitt.text.substr(0, 19) + '...</div>';
                 var message = '<div class="twitt" style="display: none">' + twitt.text + '</div>';
@@ -83,6 +85,7 @@ function initialize() {
             if (marker_count >= twitt_count) {
                 markersArray[0].setMap(null);
                 markersArray.splice(0, 1);
+                marker_count -= 1;
             }
             markersArray.push(new StyledMarker({
                 styleIcon: new StyledIcon(StyledIconTypes.BUBBLE,
@@ -105,15 +108,18 @@ function initialize() {
             data: { "id": id },
             url: "/get_messages/",
             success: function(response) {
-                console.log(id);
-                responseCallback(response);
-                var id_list = [];
-                for (var i = 0; i < response.length; i++)
-                    id_list.push(response[i].id);
-                for (var i = 1; i <response.length; i++) {
-                    var id = id_list[0];
-                    if (id < id_list[i])
-                        id = id_list[i]
+                // console.log(id);
+                console.log(response);
+                if (response != []) {
+                    responseCallback(response);
+                    var id_list = [];
+                    for (var i = 0; i < response.length; i++)
+                        id_list.push(response[i].id);
+                    for (var i = 1; i <response.length; i++) {
+                        id = id_list[0];
+                        if (id < id_list[i])
+                            id = id_list[i]
+                    }
                 }
                 // if (id < Math.max.apply(Math, id_list)) {
                 //     id = Math.max.apply(Math, id_list)
