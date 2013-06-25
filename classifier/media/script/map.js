@@ -51,7 +51,7 @@ function initialize() {
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-    var twitt_count = 16;
+    var twitt_count = 10;
 
     var message_count = 0;
     function showTwitt(response) {
@@ -91,30 +91,33 @@ function initialize() {
                     map: map
                 })
             );
-            // showTwitt(twitt);
-            // setTimeout(console.log("прошла секунда"), 1000);
-            // console.log("прошла секунда").delay(1000);
-            // setTimeout(showTwitt(twitt), 1000);
+            showTwitt(twitt);
             marker_count += 1;
             n++;
         }
         getTwitts();
     }
 
-    var id = 0;
+    var id = '0';
     function getTwitts() {
         $.ajax({
             type: "get",
             data: { "id": id },
             url: "/get_messages/",
             success: function(response) {
+                console.log(id);
                 responseCallback(response);
-                // showTwitt(response);
-                // var id_list = [];
-                // console.log("ok")
-                // console.log(id_list);
-                // for (var i = 0; i < response.length; i++)
-                //     id_list.push(response[i]['id']);
+                var id_list = [];
+                for (var i = 0; i < response.length; i++)
+                    id_list.push(response[i].id);
+                for (var i = 1; i <response.length; i++) {
+                    var id = id_list[0];
+                    if (id < id_list[i])
+                        id = id_list[i]
+                }
+                // if (id < Math.max.apply(Math, id_list)) {
+                //     id = Math.max.apply(Math, id_list)
+                // }
             }
         });
     }
