@@ -102,7 +102,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-if os.uname()[1] == 'ip-10-248-96-199':
+if os.uname()[1] =='ip-10-254-38-86':
     ROOT_URLCONF = 'urls'    
     # Python dotted path to the WSGI application used by Django's runserver.
     WSGI_APPLICATION = 'wsgi.application'

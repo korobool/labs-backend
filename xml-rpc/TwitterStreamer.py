@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 
@@ -86,8 +87,10 @@ def process_twitt(twitt):
 
 def run():
     # Create twitter streamer and set credentials
-    twitter_stream = Tstream('/home/igor/Projects/security_keys/skeys.txt')
-
+    project_dir = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]
+    keys_dir = os.path.split(project_dir)[0] + '/security_keys/skeys.txt'
+    twitter_stream = Tstream(keys_dir)
+    
     # Process twitts one by one
     for twitt in twitter_stream.read():
         process_twitt(twitt)
