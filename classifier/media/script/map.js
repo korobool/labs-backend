@@ -33,8 +33,10 @@
 // }
 
 // Rainbow colors
-var color_rainbow = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "0000FF", "#4B0082", "#8B00FF"];
-var color_bootstrap = ["#999999", "#468847", "#f89406", "#b94a48", "#3a87ad", "#333333"]
+var color_rainbow = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "0000FF",
+                     "#4B0082", "#8B00FF"];
+var color_bootstrap = ["#999999", "#468847", "#f89406", "#b94a48", "#3a87ad",
+                       "#333333"]
 
 var markersArray = [];
 
@@ -55,24 +57,19 @@ function initialize() {
 
     var message_count = 0;
     function showTwitt(response) {
-        // var n = 0;
-        // while (n < response.length) {
-            $('.twitts').after(function() {
-                // var twitt = JSON.parse(response);
-                var twitt = response;
-                if (message_count >= twitt_count) {
-                    $('.twitt')[twitt_count - 1].remove();
-                    message_count -= 1;
-                }
-                if (twitt.text.length > 19)
-                    return '<div class="twitt" style="display: none">' + twitt.text.substr(0, 19) + '...</div>';
-                var message = '<div class="twitt" style="display: none">' + twitt.text + '</div>';
-                return message;
-            });
-            $('.twitt').show('slow');
-            message_count += 1;
-        //     n++;
-        // }
+        $('.twitts').after(function() {
+            var twitt = response;
+            if (message_count >= twitt_count) {
+                $('.twitt')[twitt_count - 1].remove();
+                message_count -= 1;
+            }
+            if (twitt.text.length > 19)
+                return '<div class="twitt" style="display: none">' + twitt.text.substr(0, 19) + '...</div>';
+            var message = '<div class="twitt" style="display: none">' + twitt.text + '</div>';
+            return message;
+        });
+        $('.twitt').show('slow');
+        message_count += 1;
     }
 
     var marker_count = 0;
@@ -82,6 +79,8 @@ function initialize() {
             var twitt = response[n];
             var myLatLng = new google.maps.LatLng(twitt.coordinates[1],
                                                   twitt.coordinates[0]);
+            if (twitt.text.length > 19)
+                twitt.text = twitt.text.substr(0, 25) + '...';
             if (marker_count >= twitt_count) {
                 markersArray[0].setMap(null);
                 markersArray.splice(0, 1);
@@ -94,41 +93,31 @@ function initialize() {
                     map: map
                 })
             );
-            showTwitt(twitt);
             marker_count += 1;
             n++;
         }
-        getTwitts();
     }
 
     var id = '0';
     function getTwitts() {
         $.ajax({
-            type: "get",
+            type: "GET",
             data: { "id": id },
             url: "/get_messages/",
             success: function(response) {
-                // console.log(id);
-                console.log(response);
-                if (response != []) {
-                    responseCallback(response);
-                    var id_list = [];
-                    for (var i = 0; i < response.length; i++)
-                        id_list.push(response[i].id);
-                    for (var i = 1; i <response.length; i++) {
-                        id = id_list[0];
-                        if (id < id_list[i])
-                            id = id_list[i]
-                    }
+                var n = 0;
+                while (n < response.length) {
+                    id = response[n].id;
+                    showTwitt(response[n]);
+                    n++;
                 }
-                // if (id < Math.max.apply(Math, id_list)) {
-                //     id = Math.max.apply(Math, id_list)
-                // }
+                responseCallback(response);
+                getTwitts();
             }
         });
     }
 
-    getTwitts();    
+    getTwitts();
 }
 
 google.maps.event.addDomListener(window, "load", initialize);
