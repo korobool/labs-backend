@@ -4,33 +4,24 @@ __author__ = 'Oleksandr Korobov'
 
 import sys
 
-from PyDaemon import Daemon
-
 from SimpleXMLRPCServer import SimpleXMLRPCServer
-import cls
 
-class ServerClass():
-    def __init__(self):
-        self.ai_agent = cls.Classifier()
-    def classify_text(self, text):
-        genre = self.ai_agent.document_class(text)
-        return genre
-    def get_genres_list(self):
-        return self.ai_agent.genres
+from PyDaemon import Daemon
+from reversi_game import ServerClass
 
-class ClassifierDaemon(Daemon):
+
+class ReversiDaemon(Daemon):
     def run(self):
         while True:
             try:
-                server = SimpleXMLRPCServer(("", 8001))
+                server = SimpleXMLRPCServer(("", 8006))
                 server.register_instance(ServerClass())
-                server.register_introspection_functions()
                 server.serve_forever()
             except Exception as e:
                 pass
 
 if __name__ == "__main__":
-    daemon = ClassifierDaemon('/tmp/classifier-daemon.pid')
+    daemon = ReversiDaemon('/tmp/reversi-daemon.pid')
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
             daemon.start()
