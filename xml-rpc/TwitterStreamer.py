@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import pymongo
 
 __author__ = 'oleksandr'
 
@@ -81,9 +82,17 @@ class Tstream:
 from xmlrpclib import ServerProxy
 twitt_queue = ServerProxy("http://localhost:8002")
 
+
+def save_to_history(twitt):
+    mongo = pymongo.Connection('localhost', 27017)
+    twitts = mongo.twitts
+    history = twitts.history
+    history.insert(twitt)
+
+
 def process_twitt(twitt):
     print twitt_queue.add_twitt(json.dumps(twitt)), twitt
-    # print type(twitt)
+    save_to_history(twitt)
 
 def run():
     # Create twitter streamer and set credentials

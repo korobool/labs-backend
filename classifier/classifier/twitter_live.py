@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from xmlrpclib import ServerProxy
 import json
-twitt_queue = ServerProxy("http://korobov-labs.com:8002")
+twitt_queue = ServerProxy("http://ai-labs.org:8002")
 
 def fetchsamples(id='0'):
     import time;time.sleep(0.33);
