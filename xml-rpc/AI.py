@@ -9,7 +9,12 @@ class ReversiSimpleAI():
         move_affected = {}
 
         for move in moves:
-            move_affected[move] = board.move(move[0], move[1], 1).score(1) - board.score(1)
+            move_affected[move] = board.move(move[0], move[1], current_player).score(1) - board.score(current_player)
+
+        is_ramndom = choice((True, False, False, False))
+
+        if is_ramndom:
+            return choice(board.possible_moves(current_player))
 
         if len(moves) > 0:
             if (0, 0) in moves:
