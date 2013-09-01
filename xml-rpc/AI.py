@@ -2,6 +2,7 @@ from random import choice
 # from board import Board
 import operator
 
+
 class ReversiSimpleAI():
     def get_best_move(self, board, current_player):
         moves = board.possible_moves(current_player)
@@ -9,7 +10,8 @@ class ReversiSimpleAI():
         move_affected = {}
 
         for move in moves:
-            move_affected[move] = board.move(move[0], move[1], current_player).score(1) - board.score(current_player)
+            move_affected[move] = board.move(move[0], move[1], current_player).score(current_player) -\
+                                  board.score(current_player)
 
         is_ramndom = choice((True, False, False, False))
 
