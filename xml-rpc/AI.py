@@ -13,11 +13,6 @@ class ReversiSimpleAI():
             move_affected[move] = board.move(move[0], move[1], current_player).score(current_player) -\
                                   board.score(current_player)
 
-        is_ramndom = choice((True, False, False, False))
-
-        if is_ramndom:
-            return choice(board.possible_moves(current_player))
-
         if len(moves) > 0:
             if (0, 0) in moves:
                 return (0, 0)
@@ -27,6 +22,11 @@ class ReversiSimpleAI():
                 return (7, 0)
             if (0, 0) in moves:
                 return (7, 7)
+
+            is_random = choice((True, False, False, False))
+
+            if is_random:
+                return choice(board.possible_moves(current_player))
 
             result = max(move_affected.iteritems(), key=operator.itemgetter(1))[0]
 
