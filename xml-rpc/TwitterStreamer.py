@@ -72,6 +72,7 @@ class Tstream:
                 if (data['lang'] == 'en') and data['coordinates'] != None:
                     try:
                         yield {'id': data['id_str'],
+                               'ts': str(data['created_at']),
                                'coordinates': data['coordinates']['coordinates'],
                                'text': str(data['text'])}
                     except Exception:
