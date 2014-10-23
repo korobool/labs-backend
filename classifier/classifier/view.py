@@ -49,6 +49,7 @@ def classifier(request):
     c.update(csrf(request))
     return render_to_response('classifier.html', c)
 
+# Twitter map comment
 def twitter_map(request):
     c = {}
     c.update(csrf(request))
