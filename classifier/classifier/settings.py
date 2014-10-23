@@ -107,7 +107,7 @@ if os.uname()[1] =='ip-10-254-38-86':
     # Python dotted path to the WSGI application used by Django's runserver.
     WSGI_APPLICATION = 'wsgi.application'
 else:
-    ROOT_URLCONF = 'classifier.urls'
+    ROOT_URLCONF = 'urls'
     # Python dotted path to the WSGI application used by Django's runserver.
     WSGI_APPLICATION = 'classifier.wsgi.application'
 
