@@ -61,7 +61,7 @@ class Tstream:
         return response
 
     def read(self):
-        url = "https://stream.twitter.com/1/statuses/sample.json"
+        url = "https://stream.twitter.com/1.1/statuses/sample.json"
         parameters = []
 
         response = self.twitterreq(url, "GET", parameters)

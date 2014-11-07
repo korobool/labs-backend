@@ -9,3 +9,5 @@ local_data
 .*
 logs
 *.txt
+.env
+.env/*
